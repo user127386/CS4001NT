@@ -16,10 +16,10 @@ public class ProPlan extends AIModel{
     
     public String removeTeamMember(){
         availableSlots += 1;
-        return "Your Team member has been removed. Available Slots: ";
+        return "Your Team member has been removed. Available Slots: " + availableSlots;
     }
     
-    public String usePropmt(String promptText, int outputTokens) {
+    public String usePrompt(String promptText, int outputTokens) {
         boolean withinContext = calculateTokenUsage(promptText, outputTokens);
         if (withinContext){
             return "Prompt Received. Since You have pro plan no quota was reduced.";
@@ -31,7 +31,7 @@ public class ProPlan extends AIModel{
     public String display() {
         return "Pro/Team plan\n" 
         + "Model: " + getModelName() + "\n" 
-        + "Price: " + getPrice() + " NPR\n"
+        + "Price (per 100k tokens): " + getPrice() + " NPR\n"
         + "Parameters: " + getParameterCount() + "\n" 
         + "Context Window: " + getContextWindow() + " tokens\n" 
         + "Available Slots For A Team: " + getAvailableSlots();

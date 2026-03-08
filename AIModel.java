@@ -13,7 +13,7 @@ public abstract class AIModel {
    private int contextWindow; //represents max tokens per request
    
    //fixed tokens used for token calculation
-   private final int FIXED_TOKENS = 50;
+   private static final int FIXED_TOKENS = 50;
    
    // constructor that accepts 4 arguements to initialize attributes
    public AIModel(String modelName, double price, int parameterCount, int contextWindow) {
@@ -48,7 +48,7 @@ public abstract class AIModel {
     * 4. Return true if and only if given prompt so are within the context window
     */
    public boolean calculateTokenUsage(String promptText, int outputTokens) {
-       /**assuming 4 text = 1 token
+       /**assuming 4 letters = 1 token
         * used math.max so that if prompt text is 1 word only
         * then the token usage instead of being 0.25, 
         * maximum value will go and be set on the variable,
